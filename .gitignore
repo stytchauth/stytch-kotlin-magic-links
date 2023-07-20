@@ -36,4 +36,5 @@ out/
 .vscode/
 
 local.properties
+.DS_Store
 

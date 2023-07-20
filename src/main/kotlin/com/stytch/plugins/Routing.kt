@@ -67,7 +67,7 @@ fun Application.configureRouting() {
         }
 
         get("/logout") {
-            StytchClient.sessions.revoke(RevokeRequest())
+            // Logging the user out depends on how you choose to persist the session information after authentication
             call.respond(FreeMarkerContent("loggedOut.ftl", null))
         }
     }
