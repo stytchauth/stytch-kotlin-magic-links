@@ -6,7 +6,6 @@ import com.stytch.kotlin.common.StytchResult
 import com.stytch.kotlin.consumer.StytchClient
 import com.stytch.kotlin.consumer.models.magiclinks.AuthenticateRequest
 import com.stytch.kotlin.consumer.models.magiclinksemail.LoginOrCreateRequest
-import com.stytch.kotlin.consumer.models.sessions.RevokeRequest
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
@@ -26,7 +25,7 @@ private const val MAGIC_LINK_URL = "http://$HOST:$PORT/authenticate"
 fun Application.configureRouting() {
     install(StatusPages) {
         exception<Throwable> { call, cause ->
-            call.respondText(text = "500: $cause" , status = HttpStatusCode.InternalServerError)
+            call.respondText(text = "500: $cause", status = HttpStatusCode.InternalServerError)
         }
     }
     routing {
@@ -39,11 +38,15 @@ fun Application.configureRouting() {
         post("/login_or_create_user") {
             val formParameters = call.receiveParameters()
             val email = formParameters["email"] ?: ""
-            when (val response = StytchClient.magicLinks.email.loginOrCreate(LoginOrCreateRequest(
-                email = email,
-                loginMagicLinkURL = MAGIC_LINK_URL,
-                signupMagicLinkURL = MAGIC_LINK_URL,
-            ))) {
+            when (
+                val response = StytchClient.magicLinks.email.loginOrCreate(
+                    LoginOrCreateRequest(
+                        email = email,
+                        loginMagicLinkURL = MAGIC_LINK_URL,
+                        signupMagicLinkURL = MAGIC_LINK_URL,
+                    ),
+                )
+            ) {
                 is StytchResult.Success -> call.respond(FreeMarkerContent("emailSent.ftl", null))
                 is StytchResult.Error -> throw IllegalStateException(response.exception)
             }
@@ -57,10 +60,14 @@ fun Application.configureRouting() {
             }
             val token = call.request.queryParameters["token"]
                 ?: throw IllegalStateException("missing token")
-            when (val response = StytchClient.magicLinks.authenticate(AuthenticateRequest(
-                token = token,
-                sessionDurationMinutes = 30
-            ))) {
+            when (
+                val response = StytchClient.magicLinks.authenticate(
+                    AuthenticateRequest(
+                        token = token,
+                        sessionDurationMinutes = 30,
+                    ),
+                )
+            ) {
                 is StytchResult.Success -> call.respond(FreeMarkerContent("loggedIn.ftl", null))
                 is StytchResult.Error -> throw IllegalStateException(response.exception)
             }

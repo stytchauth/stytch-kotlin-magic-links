@@ -23,7 +23,7 @@ fun main() {
         factory = Netty,
         port = PORT,
         host = HOST,
-        module = Application::module
+        module = Application::module,
     ).start(wait = true)
 }
 
