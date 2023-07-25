@@ -1,6 +1,6 @@
 package com.stytch
 
-import com.stytch.kotlin.consumer.StytchClient
+import com.stytch.java.consumer.StytchClient
 import com.stytch.plugins.configureRouting
 import freemarker.cache.ClassTemplateLoader
 import io.github.cdimascio.dotenv.Dotenv

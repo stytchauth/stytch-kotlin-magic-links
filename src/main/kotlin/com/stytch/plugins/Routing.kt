@@ -2,10 +2,10 @@ package com.stytch.plugins
 
 import com.stytch.HOST
 import com.stytch.PORT
-import com.stytch.kotlin.common.StytchResult
-import com.stytch.kotlin.consumer.StytchClient
-import com.stytch.kotlin.consumer.models.magiclinks.AuthenticateRequest
-import com.stytch.kotlin.consumer.models.magiclinksemail.LoginOrCreateRequest
+import com.stytch.java.common.StytchResult
+import com.stytch.java.consumer.StytchClient
+import com.stytch.java.consumer.models.magiclinks.AuthenticateRequest
+import com.stytch.java.consumer.models.magiclinksemail.LoginOrCreateRequest
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.call

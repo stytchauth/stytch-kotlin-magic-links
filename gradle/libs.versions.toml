@@ -2,7 +2,7 @@
 dotenv = "6.4.1"
 ktor = "2.3.2"
 logback = "1.2.11"
-stytch = "1.0.0"
+stytch = "1.1.0"
 
 [libraries]
 dotenv = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenv" }
@@ -12,4 +12,4 @@ ktor-server-host = { module = "io.ktor:ktor-server-host-common-jvm", version.ref
 ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
 ktor-server-status = { module = "io.ktor:ktor-server-status-pages-jvm", version.ref = "ktor" }
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-stytch = { module = "com.stytch.kotlin:sdk", version.ref = "stytch" }
+stytch = { module = "com.stytch.java:sdk", version.ref = "stytch" }
