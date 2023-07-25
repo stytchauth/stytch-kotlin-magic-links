@@ -2,7 +2,7 @@
 dotenv = "6.4.1"
 ktor = "2.3.2"
 logback = "1.2.11"
-stytch = "0.0.1"
+stytch = "1.0.0"
 
 [libraries]
 dotenv = { module = "io.github.cdimascio:dotenv-kotlin", version.ref = "dotenv" }
